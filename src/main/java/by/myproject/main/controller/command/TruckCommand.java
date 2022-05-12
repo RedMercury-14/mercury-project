@@ -50,17 +50,17 @@ public class TruckCommand implements Command {
 			response.sendRedirect("MainController?command=GO_TO_TRUCKLIST_PAGE");
 
 		} catch (ServiceException ex) {
-			log.error("Ошибка отправки формы", ex);
-			request.setAttribute("errorMessage", "Ошибка отправки формы");
+			log.error("Form submission error", ex);
+			request.setAttribute("errorMessage", "Form submission error");
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		} catch (NotDateFormatException e) {
-			log.error("Неправильный формат даты", e);
+			log.error("Incorrect date format", e);
 			response.sendRedirect("MainController?command=GO_TO_ADDTRUCK_PAGE&errorMessageTruck="
-					+ URLEncoder.encode("Неправильный формат даты", "utf-8"));
+					+ URLEncoder.encode("Incorrect date format", "utf-8"));
 		} catch (NotDataFieldException e) {
-			log.error("Не заполнены все поля", e);
+			log.error("All fields are not filled in", e);
 			response.sendRedirect("MainController?command=GO_TO_ADDTRUCK_PAGE&errorMessageTruck="
-					+ URLEncoder.encode("Не заполнены все поля", "utf-8"));
+					+ URLEncoder.encode("All fields are not filled in", "utf-8"));
 		}
 	}
 
@@ -79,7 +79,7 @@ public class TruckCommand implements Command {
 				Truck truck = serviceFactory.getTruckService().getTruck(numCar);
 				;
 				request.setAttribute("Truck", truck);
-				request.setAttribute("errorMessageTruck", "Неправильный формат даты");
+				request.setAttribute("errorMessageTruck", "Incorrect date format");
 				request.getRequestDispatcher("/WEB-INF/jsp/editCar.jsp").forward(request, response);
 			} else {
 				Truck truck = new Truck(numCar, numTr, carModel, trModel, typeTr, dateCar, dateTr);
@@ -88,7 +88,7 @@ public class TruckCommand implements Command {
 			}
 		} catch (Exception ex) {
 			log.error("Ошибка отправки формы", ex);
-			response.sendRedirect("MainController?command=GO_TO_ERROR_PAGE&errorMessage = Ошибка отправки формы!");
+			response.sendRedirect("MainController?command=GO_TO_ERROR_PAGE&errorMessage = Form submission error!");
 		}
 	}
 
@@ -100,9 +100,9 @@ public class TruckCommand implements Command {
 			response.sendRedirect("MainController?command=GO_TO_TRUCKLIST_PAGE");
 		} catch (ServiceException ex) {
 			log.error("Ошибка отправки формы", ex);
-			request.getSession().removeAttribute("errorMessage"); //временно! 
+			request.getSession().removeAttribute("errorMessage");
 			response.sendRedirect("MainController?command=GO_TO_ERROR_PAGE&errorMessage="
-					+ URLEncoder.encode("Невозможно удалить авто, т.к. машина привязана к путевому листу!", "utf-8"));
+					+ URLEncoder.encode("It is impossible to delete the car, because the car is tied to the ticket list!", "utf-8"));
 		}
 	}
 

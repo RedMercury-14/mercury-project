@@ -30,8 +30,8 @@ public class GoToEditCarPage implements Command{
 				request.getRequestDispatcher("/error.jsp").forward(request, response);
 			}
 		} catch (Exception ex) {
-			log.error("Ошибка отправки формы",ex);
-			request.setAttribute("errorMessage", "Ошибка отправки формы");
+			log.error("Form submission error",ex);
+			request.setAttribute("errorMessage", "Form submission error");
 			System.out.println(ex);
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}

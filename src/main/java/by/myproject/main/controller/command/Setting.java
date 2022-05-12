@@ -38,7 +38,7 @@ public class Setting implements Command{
 		session.setAttribute("email", worker.geteMail());
 		session.setAttribute("password", user.getPassword());
 		session.setAttribute("login", login);
-		response.sendRedirect("MainController?command=GO_TO_SETTING_PAGE&errorMessage=Настройки сохранены!");
+		response.sendRedirect("MainController?command=GO_TO_SETTING_PAGE&errorMessage=Settings are saved!");
 	}
 
 }

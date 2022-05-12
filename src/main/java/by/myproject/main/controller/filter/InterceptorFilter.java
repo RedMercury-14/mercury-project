@@ -47,7 +47,7 @@ public class InterceptorFilter implements Filter {
 				chain.doFilter(request, response);
 				return;
 			} else {
-				session.setAttribute("errorMessage", "Неизвестный пользователь! Выполните вход");
+				session.setAttribute("errorMessage", "Unknown user! Log in");
 				ServletContext ctx = filterConfig.getServletContext();
 				RequestDispatcher dispatcher = ctx.getRequestDispatcher("/WEB-INF/jsp/logination.jsp");
 				dispatcher.forward(request, response);

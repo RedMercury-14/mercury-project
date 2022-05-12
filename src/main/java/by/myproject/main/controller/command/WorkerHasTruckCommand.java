@@ -41,7 +41,7 @@ public class WorkerHasTruckCommand implements Command {
 					dateOfFinish = null;
 				}
 				if (!dateServise.isValidationDate(dateOfStart)) {
-					response.sendRedirect("MainController?command=GO_TO_NEWCREW_PAGE&errorMessage="+URLEncoder.encode("Неправильный формат даты!","utf-8"));
+					response.sendRedirect("MainController?command=GO_TO_NEWCREW_PAGE&errorMessage="+URLEncoder.encode("Incorrect date format!","utf-8"));
 				} else {
 					WorkerHasTruck workerHasTruck = new WorkerHasTruck(idWorkers, trucksNumber, workersPosition,
 							dateOfStart, dateOfFinish);
@@ -50,8 +50,8 @@ public class WorkerHasTruckCommand implements Command {
 				}
 
 			} catch (Exception ex) {
-				log.error("Ошибка отправки формы", ex);
-				response.sendRedirect("MainController?command=GO_TO_ERROR_PAGE&errorMessage = Ошибка отправки формы!");
+				log.error("Form submission error!", ex);
+				response.sendRedirect("MainController?command=GO_TO_ERROR_PAGE&errorMessage = Form submission error!");
 			}
 		} else if ("editCrew".equals(request.getParameter("command"))) {
 			try {
@@ -70,7 +70,7 @@ public class WorkerHasTruckCommand implements Command {
 				if (!dateServise.isSQLValidationDate(dateOfStart)) {
 					List<Worker> driversList1 = new ArrayList<Worker>();
 					WorkerHasTruck workerHasTruck = serviceFactory.getWorkerHasTruckService().getWorkerHasTruck(id);
-					request.setAttribute("errorMessageWaybill", "Неправильный формат даты");
+					request.setAttribute("errorMessageWaybill", "Incorrect date format");
 					driversList1 = getDriver();
 					request.setAttribute("Worker", driversList1);
 					List<Truck> truck = serviceFactory.getTruckService().getTruckList();
@@ -84,8 +84,8 @@ public class WorkerHasTruckCommand implements Command {
 					response.sendRedirect("MainController?command=GO_TO_WAYBILL_PAGE");
 				}
 			} catch (Exception ex) {
-				log.error("Ошибка отправки формы", ex);
-				response.sendRedirect("MainController?command=GO_TO_ERROR_PAGE&errorMessage = Ошибка отправки формы!");
+				log.error("Form submission error!", ex);
+				response.sendRedirect("MainController?command=GO_TO_ERROR_PAGE&errorMessage = Form submission error!");
 			}
 		} else if ("delCrew".equals(request.getParameter("command"))) {
 			try {
@@ -94,7 +94,7 @@ public class WorkerHasTruckCommand implements Command {
 				response.sendRedirect("MainController?command=GO_TO_WAYBILL_PAGE");
 			} catch (Exception ex) {
 				log.error("Ошибка отправки формы", ex);
-				response.sendRedirect("MainController?command=GO_TO_ERROR_PAGE&errorMessage = Ошибка отправки формы!");
+				response.sendRedirect("MainController?command=GO_TO_ERROR_PAGE&errorMessage = Form submission error!");
 			}
 		} else {
 			request.getRequestDispatcher("/error.jsp").forward(request, response);

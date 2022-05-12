@@ -15,7 +15,6 @@ public class UserService {
 
 private static final UserDataBase<User> userDataBase = DAOFactory.getDAOFactory().getUserDataBase();
 private static final Logger log = Logger.getLogger(UserService.class);
-//валидатор: проверка длинны логина, проверка наличия роли
 	
 	public User getUser(String num) throws ServiceException {
 		if(Validator.isEmptyOfNull(num)) {

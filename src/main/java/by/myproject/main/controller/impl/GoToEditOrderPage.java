@@ -30,8 +30,8 @@ public class GoToEditOrderPage implements Command{
 				request.getRequestDispatcher("/error.jsp").forward(request, response);
 			}
 		} catch (Exception ex) {
-			log.error("Ошибка обработки контроллера заказов",ex);
-			request.setAttribute("errorMessage", "Ошибка обработки контроллера заказов");
+			log.error("Order Controller Processing error",ex);
+			request.setAttribute("errorMessage", "Order Controller Processing error");
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
 			
 		}

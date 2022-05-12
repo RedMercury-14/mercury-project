@@ -16,7 +16,7 @@ public class LocalCommand implements Command {
 			throws ServletException, IOException, ServiceException {
 		request.getSession(true).setAttribute("local", request.getParameter("local"));
 		String url = request.getParameter("url");
-		response.sendRedirect("MainController?command=" + url); // переписать урл в jsp
+		response.sendRedirect("MainController?command=" + url); 
 
 	}
 

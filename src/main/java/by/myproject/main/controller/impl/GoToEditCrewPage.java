@@ -43,8 +43,8 @@ public class GoToEditCrewPage implements Command{
 				request.getRequestDispatcher("/error.jsp").forward(request, response);
 			}
 		} catch (Exception ex) {
-			log.error("Ошибка обработки контроллера экипажей", ex);
-			request.setAttribute("errorMessage", "Ошибка обработки контроллера экипажей");
+			log.error("Crew Controller Processing error", ex);
+			request.setAttribute("errorMessage", "Crew Controller Processing error");
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
 
 		}

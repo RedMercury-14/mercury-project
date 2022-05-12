@@ -88,17 +88,5 @@ public class UserControlService {
 			throw new ServiceException(e);
 		}
 	}
-	/*
-	public void deleteOrder(int num) throws ServiceException {
-		try {
-			orderDataBase.delete(num);
-		} catch (DAOException e) {
-			throw new ServiceException(e);
-		}
-	}
-
-	
-
-	}*/
 
 }

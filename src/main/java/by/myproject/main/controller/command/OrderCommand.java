@@ -43,7 +43,7 @@ public class OrderCommand implements Command {
 				if (!dateServise.isValidationDate(dateLoad) || !dateServise.isValidationDate(dateCust)
 						|| !dateServise.isValidationDate(dateUnload)) {
 					response.sendRedirect("MainController?command=GO_TO_ADDORDER_PAGE&errorMessage="
-							+ URLEncoder.encode("Неправильный формат даты", "utf-8"));
+							+ URLEncoder.encode("Incorrect date format", "utf-8"));
 				} else {
 					Order order = new Order(route, ordCol, dateLoad, dateCust, dateUnload, client, prise, cargo, user);
 					serviceFactory.getOrderService().setOrder(order);
@@ -52,7 +52,7 @@ public class OrderCommand implements Command {
 
 			} catch (Exception ex) {
 				log.error("Ошибка отправки формы", ex);
-				response.sendRedirect("MainController?command=GO_TO_ERROR_PAGE&errorMessage = Ошибка отправки формы!");
+				response.sendRedirect("MainController?command=GO_TO_ERROR_PAGE&errorMessage = Form submission error!");
 			}
 		} else if (command.equals("editOrder")) {
 			try {
@@ -73,7 +73,7 @@ public class OrderCommand implements Command {
 							|| !dateServise.isValidationDate(dateUnload)) {
 						Order order = serviceFactory.getOrderService().getOrder(numOrd);
 						request.setAttribute("Order", order);
-						request.setAttribute("errorMessageOrder", "Неправильный формат даты");
+						request.setAttribute("errorMessageOrder", "Incorrect date format");
 						request.getRequestDispatcher("/WEB-INF/jsp/editOrder.jsp").forward(request, response);
 					} else {
 						Order order = new Order(numOrd, route, ordCol, dateLoad, dateCust, dateUnload, client, prise,
@@ -88,8 +88,8 @@ public class OrderCommand implements Command {
 					response.sendRedirect("MainController?command=GO_TO_ORDERLIST_PAGE");
 				}
 			} catch (Exception ex) {
-				log.error("Ошибка отправки формы", ex);
-				response.sendRedirect("MainController?command=GO_TO_ERROR_PAGE&errorMessage = Ошибка отправки формы!");
+				log.error("Form submission error!", ex);
+				response.sendRedirect("MainController?command=GO_TO_ERROR_PAGE&errorMessage = Form submission error!");
 			}
 		} else if ("delOrder".equals(command)) {
 			try {
@@ -97,8 +97,8 @@ public class OrderCommand implements Command {
 				serviceFactory.getOrderService().deleteOrder(numOrd);
 				response.sendRedirect("MainController?command=GO_TO_ORDERLIST_PAGE");
 			} catch (Exception ex) {
-				log.error("Ошибка отправки формы", ex);
-				response.sendRedirect("MainController?command=GO_TO_ERROR_PAGE&errorMessage = Ошибка отправки формы!");
+				log.error("Form submission error!", ex);
+				response.sendRedirect("MainController?command=GO_TO_ERROR_PAGE&errorMessage = Form submission error!");
 			}
 		} else if ("editCarInOrder".equals(command)) {
 			Integer numOrd = Integer.parseInt(request.getParameter("numord"));

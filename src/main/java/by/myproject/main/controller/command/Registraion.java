@@ -35,14 +35,14 @@ public class Registraion implements Command {
 		this.login = request.getParameter("login");		
 		
 		if (name.isEmpty() || surname.isEmpty() || password.isEmpty()) {	
-			response.sendRedirect("MainController?command=GO_TO_REGISTRATION_PAGE&errorMessage="+URLEncoder.encode("Не заполнены все обязательные поля!","utf-8"));
+			response.sendRedirect("MainController?command=GO_TO_REGISTRATION_PAGE&errorMessage="+URLEncoder.encode("All required fields are not filled in!","utf-8"));
 		}else if (password.equals(password2) != true) {
-			response.sendRedirect("MainController?command=GO_TO_REGISTRATION_PAGE&errorMessage="+URLEncoder.encode("Пароли не совпадают!","utf-8"));						
+			response.sendRedirect("MainController?command=GO_TO_REGISTRATION_PAGE&errorMessage="+URLEncoder.encode("Passwords don't match!","utf-8"));						
 		}else {	
 			String tabelNumber = ""+IDGenerate.getNewID();
 			boolean flag = serviceFactory.getUserService().isContain(login);
 			if (flag == true) {
-				response.sendRedirect("MainController?command=GO_TO_REGISTRATION_PAGE&errorMessage="+URLEncoder.encode("Пользователь с таким логином существует!","utf-8"));	
+				response.sendRedirect("MainController?command=GO_TO_REGISTRATION_PAGE&errorMessage="+URLEncoder.encode("A user with this username exists!","utf-8"));	
 			}else {
 				User user = new User(login, 3, tabelNumber, password);				
 				Worker worker = new Worker(tabelNumber, login, name, surname, patronymic, null, null, null);

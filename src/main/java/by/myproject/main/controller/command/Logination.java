@@ -27,7 +27,7 @@ public class Logination implements Command {
 		
 		
 		if(login.isEmpty() || password.isEmpty()) {	
-			response.sendRedirect("MainController?command=GO_TO_LOGINATION_PAGE&errorMessage="+URLEncoder.encode("Не заполнены все обязательные поля","utf-8"));
+			response.sendRedirect("MainController?command=GO_TO_LOGINATION_PAGE&errorMessage="+URLEncoder.encode("All required fields are not filled in","utf-8"));
 			
 		}else if(serviceFactory.getUserService().isUser(login, password)){
 			response.sendRedirect("MainController?command=GO_TO_USER_PAGE");
@@ -47,7 +47,7 @@ public class Logination implements Command {
 			session.setAttribute("role", serviceFactory.getWorkerService().getRole(login));
 			response.setContentType("text/html;charset=UTF-8");			
 		}else {
-			response.sendRedirect("MainController?command=GO_TO_LOGINATION_PAGE&errorMessage="+URLEncoder.encode("Не правильный логин или пароль","utf-8"));
+			response.sendRedirect("MainController?command=GO_TO_LOGINATION_PAGE&errorMessage="+URLEncoder.encode("Incorrect login or password","utf-8"));
 		}
 	}
 

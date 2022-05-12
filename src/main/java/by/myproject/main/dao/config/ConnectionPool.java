@@ -72,7 +72,6 @@ public final class ConnectionPool {
 
         for (int i = 0; i < poolSize; i++) {
             Connection connection = DriverManager.getConnection(url, user, password);
-            //System.out.println("подключен пул номе" + " "+ i + " " + "подключение" + " "+ connection.toString());
             PooledConnection pooledConnection = new PooledConnection(connection);
             connectionQueue.add(pooledConnection);
         }
@@ -81,7 +80,7 @@ public final class ConnectionPool {
     	logger.error("SQLException on ConnectionPool",e);
         throw new ConnectionPoolException("SQLException on ConnectionPool", e);
     } catch (ClassNotFoundException e) {
-    	logger.error("Не удается найти класс драйвера базы данных",e);
+    	logger.error("Cannot find database driver class",e);
         throw new ConnectionPoolException("Cannot find database driver class", e);
     }}
     
@@ -109,10 +108,8 @@ public final class ConnectionPool {
 		connection.close();
 		closeConnection(connection,st);	
     }
-    public static Connection returnConnection(Connection connection) throws ConnectionPoolException, SQLException {    	 
-    	//System.out.println("было: " +givenAwayConQueue.size() + " " + connectionQueue.size() );
-		connection.close();
-		//System.out.println("стало: " +givenAwayConQueue.size() + " " + connectionQueue.size() );			
+    public static Connection returnConnection(Connection connection) throws ConnectionPoolException, SQLException {  
+		connection.close();	
 		return null;       
     }
     

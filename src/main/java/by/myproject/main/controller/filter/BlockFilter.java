@@ -41,7 +41,7 @@ public class BlockFilter implements Filter {
 			return;
 		}
 		if (session.getAttribute("role").equals("block") && !req.getParameter("command").equals("EXIT")) {
-			session.setAttribute("errorMessage", "Аккаунт заблокирован! Обратитесь к администратору.");
+			session.setAttribute("errorMessage", "The account is blocked! Contact the administrator.");
 			ServletContext ctx = filterConfig.getServletContext();
 			RequestDispatcher dispatcher = ctx.getRequestDispatcher("/error.jsp");
 			dispatcher.forward(request, response);

@@ -28,10 +28,10 @@ public class ControlCommand implements Command {
 
 			if (name.isEmpty() || surname.isEmpty() || password.isEmpty()) {
 				response.sendRedirect(
-						"MainController?command=GO_TO_REGISTRATION_PAGE&errorMessage=Не заполнены все обязательные поля!");
+						"MainController?command=GO_TO_REGISTRATION_PAGE&errorMessage=All required fields are not filled in!");
 			} else if (password.equals(password2) != true) {
 				response.sendRedirect(
-						"MainController?command=GO_TO_REGISTRATION_PAGE&errorMessage=Пароли не совпадают!");
+						"MainController?command=GO_TO_REGISTRATION_PAGE&errorMessage=Passwords don't match!");
 
 			} else {
 				String tabelNumber = "" + IDGenerate.getNewID();
@@ -41,7 +41,7 @@ public class ControlCommand implements Command {
 					//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/registration.jsp");
 					//dispatcher.forward(request, response);
 					response.sendRedirect(
-							"MainController?command=GO_TO_REGISTRATION_PAGE&errorMessage=Пользователь с таким логином существует!");
+							"MainController?command=GO_TO_REGISTRATION_PAGE&errorMessage=A user with this username exists!");
 				} else {
 					User user = new User(login, 3, tabelNumber, password);
 					Worker worker = new Worker(tabelNumber, login, name, surname, patronymic, null, null, null);

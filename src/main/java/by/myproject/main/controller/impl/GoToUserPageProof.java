@@ -24,7 +24,7 @@ public class GoToUserPageProof implements Command {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/userPage.jsp");			
 			dispatcher.forward(request, response);
 		}else {
-			session.setAttribute("errorMessage", "Неизвестный пользователь! Выполните вход");
+			session.setAttribute("errorMessage", "Unknown user! Log in");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/logination.jsp");
 			dispatcher.forward(request, response);
 		}	

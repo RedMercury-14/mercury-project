@@ -16,7 +16,7 @@ public class EmptyTag extends TagSupport {
 	public int doStartTag() throws JspException {
 		JspWriter out = pageContext.getOut();
 		try {
-			out.println("Тег работает");
+			out.println("The tag works");
 		} catch (IOException e) {
 			throw new JspException(e);
 		}

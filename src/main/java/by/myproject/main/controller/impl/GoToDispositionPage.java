@@ -50,7 +50,7 @@ public class GoToDispositionPage implements Command{
 				if(workerEntry.getDateOfFinish() == null) {
 					driver = workerEntry.getWorkersPosition();						
 				}else {
-					driver = "водитель не найден";				
+					driver = "driver not found";				
 				}
 			}
 			String cargo = entry.getCargo();
